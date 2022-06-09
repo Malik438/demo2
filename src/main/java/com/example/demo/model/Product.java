@@ -26,6 +26,7 @@ import java.util.function.Function;
 @Entity(name = "products")
 public class Product   {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "productId")
     long productId;
 

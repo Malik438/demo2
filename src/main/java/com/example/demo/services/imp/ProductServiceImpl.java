@@ -2,8 +2,11 @@ package com.example.demo.services.imp;
 
 import com.example.demo.Repositories.ProductRepository;
 import com.example.demo.dto.ProductDto;
+import com.example.demo.exception.GlobalExceptionHandler;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Product;
 import com.example.demo.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +16,8 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl  implements ProductService {
 
+    @Autowired
   private    ProductRepository productRepository ;
-
 
 
 
@@ -30,15 +33,13 @@ public class ProductServiceImpl  implements ProductService {
 
         Product prod = mapToEntity(product_Dto);
         Product newProduct = productRepository.save(prod);
-
         ProductDto productResponse = mapToDTO(newProduct);
         return productResponse;
     }
 
     @Override
-    public List<ProductDto> getAllProducts() {
-        List<Product> prods = productRepository.findAll();
-        return prods.stream().map(prod -> mapToDTO(prod)).collect(Collectors.toList());
+    public List<Product> getAllProducts() {
+        return  productRepository.findAll();
 
     }
 
@@ -62,8 +63,7 @@ public class ProductServiceImpl  implements ProductService {
 
     @Override
     public void deleteProductById(long id) {
-        Product prods = productRepository.findById(id).orElseThrow();
-        productRepository.delete(prods);
+        productRepository.deleteById(id);
     }
 
     private ProductDto mapToDTO(Product product){

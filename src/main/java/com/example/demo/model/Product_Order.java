@@ -18,6 +18,7 @@ public class Product_Order {
 
     @EmbeddedId
     @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private OrderProductPK pk;
 
     @Column(name = "Quantity",nullable = false)

@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 import java.util.Set;
 
 @Api(value = "Customer model information")
@@ -26,7 +27,7 @@ public class CustomerDto {
 
     @ApiModelProperty(value = "Customer DATE")
     @NotEmpty(message = "BornAt should not be null or empty")
-    private  String BornAt ;
+    private String BornAt ;
 
 
 

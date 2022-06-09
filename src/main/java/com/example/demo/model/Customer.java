@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,6 +17,7 @@ import java.util.Set;
 @Entity(name = "customers")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(
@@ -35,7 +33,7 @@ public class Customer {
     @Column(
             name = "DataOfBirth"
     )
-    Date bornAt ;
+    String bornAt ;
 
     @Column(
             name = "Password"
@@ -49,6 +47,13 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     private Set<Order> orderSet;
+
+    public Customer(Long customer) {
+    }
+
+    public  void  Customer(Long id){
+        this.id = id ;
+    }
 
 
 

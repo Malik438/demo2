@@ -16,6 +16,7 @@ import java.util.Set;
 @Entity(name = "stocks")
 public class Stock {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long stockId ;
 
     private  int quantity ;

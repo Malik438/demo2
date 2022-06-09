@@ -10,7 +10,7 @@ public interface ProductService {
 
     ProductDto insertProduct(ProductDto product_Dto);
 
-    List<ProductDto> getAllProducts();
+    List<Product> getAllProducts();
 
     ProductDto getProductById(long id);
 
